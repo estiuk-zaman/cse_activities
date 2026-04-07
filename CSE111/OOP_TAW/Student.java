@@ -1,30 +1,21 @@
 public class Student {
-    public String name;
-    public int id;
-    public Course [] courses = new Course[5];
-    public int courseCount=0;
 
-    public Student(String nam,int i){
-        name=nam;
-        id=i;
-    }
-    public void addCourse (Course nm){
-        if (courseCount<5) {
-        courses[courseCount]=nm;
-        courseCount++;
-        }
-        else{
-            System.out.println("Jayga nai");
-        }
+    public String Name;
+    public int ID;
+    public static int count=0;
+
+    public Student(String name,int id){
+        this.Name=name;
+        this.ID=id;
+        count+=1;
     }
 
-    public void showDetails(){
-        System.out.println("Name: "+name);
-        System.out.println("Id: "+ id);
-        System.out.println("Course taken:");
-        for(int i=0;i<courseCount;i++){
-            System.out.println(courses[i].code);
-            System.out.println(courses[i].title);
-        }
+    public void showdetails(){
+        System.out.println("Name: "+Name);
+        System.out.println("ID: "+ID);
     }
+
+    // public void count(){
+    //     System.out.println(count);
+    // }
 }
