@@ -5,7 +5,11 @@ public class Tester {
         // Student s2 = new Student("Carol",33);
         // s1.showdetails();
         // s2.showdetails();
-        System.out.println(Student.count);
+        // System.out.println(Student.count);
         //System.out.println(s1.count);
+        CSEStudent s1 = new CSEStudent("Bob",11);
+        s1.doClass();
+        s1.showdetails();
+        s1.doLabClass();
     }
 }

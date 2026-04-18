@@ -2,12 +2,15 @@ public class Student {
 
     public String Name;
     public int ID;
-    public static int count=0;
+    // public static int count=0;
 
-    public Student(String name,int id){
-        this.Name=name;
-        this.ID=id;
-        count+=1;
+    // public Student(String name,int id){
+    //     this.Name=name;
+    //     this.ID=id;
+    //     count+=1;
+    // }
+    public void doClass(){
+        System.out.println(Name+" is doing class");
     }
 
     public void showdetails(){
