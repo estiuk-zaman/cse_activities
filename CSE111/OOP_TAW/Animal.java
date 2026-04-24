@@ -5,6 +5,9 @@ public class Animal
         name = nm;
     }
     public void eat(){
-        System.out.println(name + " is eating bread");
+        System.out.println(name + " is eating");
+    }
+    public String toString(){
+        return "It's a animal";
     }
 }

@@ -5,12 +5,11 @@ public class Dog extends Animal
         super(nm);
         color = clr;
     }
-    public void eat(){
-        //super.eat();
-        System.out.println(name + " is eating meat");
-        super.eat();
-    }
     public void bark(){
         System.out.println(color + " " + name + " is barking");
     }
+
+    // public String toString(){
+    //     return "It's a dog";
+    // }
 }
