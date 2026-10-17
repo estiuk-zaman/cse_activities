@@ -1,0 +1,118 @@
+//Task_01:
+ public static Integer rowRotation( Integer examWeek, String[][] matrix ){
+        int rows = matrix.length;
+        int cols = matrix[0].length;
+        int aaRow = -1;
+        for(int r=0;r<rows;r++){
+            for (int c =0; c <cols; c++){
+                if(matrix[r][c].equals("AA")){ 
+                // Kinda confused here,the problem statement defines the friend as "AA", so I search for that exact string.
+                    aaRow=r;
+                }
+            }
+        }
+        int shift = (examWeek-1)%rows;
+        String [] temp = new String[cols];
+        for(int k =0; k<shift;k++){
+            for(int c =0;c<cols;c++){
+                temp[c]=matrix[rows-1][c];
+            }
+            for(int r=rows-1;r>0;r--){
+                for(int c=0;c<cols;c++){
+                    matrix[r][c]=matrix[r-1][c];
+                }
+            }
+            for(int c =0;c<cols;c++){
+                matrix[0][c]=temp[c];
+            }
+        }
+        Arr.print2D(matrix);
+        if (aaRow==-1){
+            return -1;
+        }
+        return((aaRow+shift)%rows)+1;
+    }
+    
+    
+//Task_02:
+ public static Integer[][] compressMatrix( Integer[][] matrix ){
+        int rows = matrix.length;
+        int cols = matrix[0].length;
+        Integer [][] result = new Integer[rows/2][cols/2];
+        for(int r=0;r<rows/2;r++){
+            for(int c=0;c<cols/2;c++){
+                int i =2*r;
+                int j =2*c;
+                result[r][c]=matrix[i][j]+matrix[i+1][j]+matrix[i][j+1]+matrix[i+1][j+1];
+
+            }
+        }
+        return result;
+    }
+    
+//Task_03:
+ public static void playGame( Integer[][] arena ){
+        int rows = arena.length;
+        int cols = arena[0].length;
+        int count =0;
+        for(int r=0;r<rows;r++){
+            for(int c=0;c<cols;c++){
+                int v = arena[r][c];
+                if(v>0&&v%50==0){
+                    if(r - 1 >= 0 && arena[r - 1][c] == 2){
+                        count++;
+                    }
+                    if(r + 1 < rows && arena[r + 1][c] == 2){
+                        count++;
+                    }
+                    if(c - 1 >= 0 && arena[r][c - 1] == 2){
+                        count++;
+                    }
+                    if(c + 1 < cols && arena[r][c + 1] == 2){
+                        count++;
+                    }
+                }
+            }
+        }
+        int points = count*2;
+        if(points>=10){
+            System.out.println("Points Gained: " + points + ". Your team has survived the game.");
+        }
+        else{
+            System.out.println("Points Gained: " + points + ". Your team is out.");
+        }
+    }
+    
+//Task_04:
+ public static void rotateSecret( Character[][] board ){
+        int n = board.length;
+        for(int i =0;i<n/2;i++){
+            int rotations = n/2-i;
+            int top = i;
+            int bottom = n-1-i;
+            int left=i;
+            int right =n-1-i;
+            for(int k=0;k<rotations;k++){
+                Character temp = board[top+1][left];
+                for(int r=top+1;r<bottom;r++){
+                    board[r][left] = board[r + 1][left];
+                }
+                for (int c = left; c < right; c++)  {
+                    board[bottom][c] = board[bottom][c + 1];
+                }
+                for (int r = bottom; r > top; r--) {
+                    board[r][right] = board[r - 1][right];
+                }
+                for (int c = right; c > left; c--)  {
+                     board[top][c] = board[top][c - 1];
+                }
+                board[top][left] = temp;  
+            }
+        }
+        for(int r=0;r<n;r++){
+            for(int c=0;c<n;c++){
+                System.out.print(board[r][c]);
+            }
+        }
+        System.out.println();
+    }
