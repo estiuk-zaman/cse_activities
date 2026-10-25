@@ -1,0 +1,68 @@
+package CSE220.LabAssignment.Lab_01.Practice;
+
+public class Assignment03 {
+
+    public static void playGame( Integer[][] arena ){
+        int row = arena.length;
+        int col = arena[0].length;
+        int count =0;
+
+        for(int i =0;i<row;i++){
+            for(int j =0;j<col;j++){
+                if(arena[i][j]>=50 && arena[i][j]%50==0){
+                    if(i-1>=0 && arena[i-1][j]==2){
+                        count++;
+                    }
+                    if(i+1!=row && arena[i+1][j]==2){
+                        count++;
+                    }
+                    if(j-1>=0 && arena[i][j-1]==2){
+                        count++;
+                    }
+                    if(j+1!=col && arena[i][j+1]==2){
+                        count++;
+                    }
+                }
+            }
+        }
+        if(count*2>=10){
+            System.out.println("Points Gained: "+(count*2)+ ". Your team has survived the game.");
+        }
+        else{
+            System.out.println("Points Gained: "+(count*2)+ ". Your team is out.");
+        }
+    }
+    public static void main(String[] args){
+        Integer[][] arena = {
+            {0,2,2,0},
+            {50,1,2,0},
+            {2,2,2,0},
+            {1,100,2,0}
+        };
+        System.out.println("Given Arena: ");
+        Arr.print2D(arena);
+        
+        System.out.println("\nExpected Output:");
+        System.out.print("Points Gained: 6. Your team is out.\n");
+        
+        System.out.print("\nYour Output:\n");
+        playGame( arena );
+
+        System.out.print("\n======================\n");
+
+        Integer[][] arena1 = {
+            {0,2,2,0,2},
+            {1,50,2,1,100},
+            {2,2,2,0,2},
+            {0,200,2,0,0}
+        };
+        System.out.println("\nGiven Arena: ");
+        Arr.print2D(arena1);
+        
+        System.out.println("\nExpected Output:");
+        System.out.print("Points Gained: 14. Your team has survived the game.\n");
+        
+        System.out.print("\nYour Output:\n");
+        playGame( arena1 );
+    }
+}
