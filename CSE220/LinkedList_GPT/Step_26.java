@@ -15,7 +15,21 @@ public class Step_26 {
 
     public static boolean pairWiseEqual(Node a, Node b) {
 
-        
+        while (a!=null && b!=null) {
+            if (a.next==null || b.next==null) {
+                return false;
+            }
+            boolean same = a.elem==b.elem && a.next.elem==b.next.elem;
+            boolean swapped = a.elem==b.next.elem && a.next.elem==b.elem;
+
+            if (!same && !swapped) {
+                return false;
+            }
+            a=a.next.next;
+            b=b.next.next;
+        }
+        return a==null && b==null;
+
     }
 
     public static void printList(Node head) {
