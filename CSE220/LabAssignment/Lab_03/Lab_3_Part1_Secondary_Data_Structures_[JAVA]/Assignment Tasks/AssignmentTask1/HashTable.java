@@ -59,16 +59,38 @@ public class HashTable {
 	//you need to COMPLETE this method and MUST SUBMIT IT
     //Complete this method first the write remove
     private int hashFunction( Integer key ){
-        // TO DO
-
-        return -1; //remove this line
+        
+        int index =(key+3)%ht.length;
+        return index;
     }
 
 
 	//you need to COMPLETE this method and MUST SUBMIT IT
     //before writing remove you should complete hashFunction
     public void remove( Integer key ){
-        // TO DO 
+         int idx = hashFunction(key);
+
+         if (ht[idx]==null) {
+            return ;
+         }
+         if (ht[idx].key.equals(key)) {
+            ht[idx]=ht[idx].next;
+            return ;
+         }
+         PairNode curr = ht[idx];
+         PairNode prev = null;
+         PairNode target = null;
+
+         while (curr.next!=null) {
+            if (curr.next.key.equals(key)) {
+                target=curr.next;
+            prev=curr;
+            prev.next=target.next;
+            return ;
+            }
+            curr=curr.next;
+         }
+
     }
 
 }
