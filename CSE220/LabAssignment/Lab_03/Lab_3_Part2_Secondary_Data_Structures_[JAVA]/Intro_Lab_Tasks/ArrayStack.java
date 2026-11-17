@@ -1,5 +1,7 @@
 package Intro_Lab_Tasks;
 
+import java.security.cert.TrustAnchor;
+
 public class ArrayStack {
 
     private Object[] stack;
@@ -11,22 +13,39 @@ public class ArrayStack {
     }
 
     public void push(Object element) {
-        // TODO: Implement push
+        if (top==stack.length-1) {
+            System.out.println("Stack overflow");
+            return ;
+        }
+        top++;
+        stack[top]=element;
     }
 
     public Object pop() {
-        // TODO: Implement pop
-        return null;
+        if (top==-1) {
+            System.out.println("Stack underflow");
+            return null;
+        }
+        Object temp = stack[top];
+        stack[top]=null;
+        top--;
+        return temp;
     }
 
     public Object peek() {
-        // TODO: Implement peek
-        return null;
+        if (top==-1) {
+            return null;
+        }
+        return stack[top];
     }
 
     public boolean isEmpty() {
-        // TODO: Implement isEmpty
-        return false;
+        if (top==-1) {
+            return true;
+        }
+        else{
+            return false;
+        }
     }
     
 }

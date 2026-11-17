@@ -4,8 +4,26 @@ package AssignmentTask2;
 public class HotPotato{
 
     public static String hotPotato(String[] players, int k) {
-        // TODO: Implement the hot potato logic here
-        return null;
+        
+        if (players.length==0) {
+            return null;
+        }
+        LinkedListQueue temp = new LinkedListQueue();
+        for(int i =0;i<players.length;i++){
+            temp.enqueue(players[i]);
+        }
+        int count = players.length;
+
+        while (count>1) {
+            for(int i =0;i<k;i++){
+            temp.enqueue(temp.dequeue());
+            }
+            String eliminated = (String) temp.dequeue();
+            System.out.println(eliminated+" eliminated");
+            count--;
+        }
+        String winner = (String) temp.dequeue();
+        return winner;
     }
 
     public static void main(String[] args) {

@@ -5,9 +5,65 @@ public class DancePairs {
 
     public static void dance_pair(Stack stk) {
 
-        // TODO: Implement pairing logic using only stack and queues here
-
-    }
+        Queue femaleQueue = new Queue();
+        Queue maleQueue = new Queue();
+        int count = 0;
+        while (!stk.isEmpty()) {
+            Dancer first =(Dancer)stk.pop();
+            if (stk.isEmpty()) {
+                if (first.getGender()=='F') femaleQueue.enqueue(first);
+            else maleQueue.enqueue(first);
+            break;
+            }
+           Dancer second=(Dancer)stk.peek(); 
+        if (first.getGender()!=second.getGender()) {
+            stk.pop();
+            count++;
+        System.out.println("#" + count + ": " + first + " & " + second);
+        } 
+        else if (first.getGender()=='F') 
+            {
+            femaleQueue.enqueue(first);
+        }else {
+            if (!femaleQueue.isEmpty()){
+                count++;
+                System.out.println("#" + count + ": " + first + " & " + femaleQueue.dequeue());}
+                else{
+                maleQueue.enqueue(first);
+                }
+            }
+        }
+        boolean headr=false;
+        while (!femaleQueue.isEmpty() && !maleQueue.isEmpty()) {
+            if (!headr) {
+                System.out.println("Extra Pair:");
+                headr=true;
+            }
+            count++;
+            System.out.println("#" + count + ": " + femaleQueue.dequeue() + " & " + maleQueue.dequeue());
+        }
+        if (!femaleQueue.isEmpty()) {
+            System.out.println("Unpaired Female:");
+            while (!femaleQueue.isEmpty()) {
+                System.out.print(femaleQueue.dequeue());
+                if (!femaleQueue.isEmpty()) {
+                    System.out.print(", ");
+                }
+            }
+            System.out.println();
+        }
+        if (!maleQueue.isEmpty()) {
+            System.out.println("Unpaired Male:");
+            while (!maleQueue.isEmpty()) {
+                System.out.print(maleQueue.dequeue());
+                if (!maleQueue.isEmpty()) {
+                    System.out.print(", ");
+                }
+            }
+            System.out.println();
+        }
+        
+        }
 
     public static void main(String[] args) {
         System.out.println("===== Test Case 1 =====");

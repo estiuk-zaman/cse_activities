@@ -3,8 +3,19 @@ public class StackTaskTester {
     
     // You have to write this method
     public static Stack conditionalReverse(Stack stack) {
-        // TODO: Implement conditional reverse logic here
-        return null; //remove this line once your're done
+        Stack temp = new Stack();
+        while (!stack.isEmpty()) {
+            int x = stack.pop();
+            if (temp.isEmpty() || temp.pop()!=x) {
+                temp.push(x);
+            }
+        }
+        // Stack Final = new Stack();
+        // while (!temp.isEmpty()) {
+        //     Final.push(temp.pop());
+        // }
+        // return Final;
+        return temp;
     }
 
     //DO NOT CHANGE THIS METHOD
